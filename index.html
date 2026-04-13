@@ -247,7 +247,7 @@
   <div class="hotel-card">
     <div class="hotel-title">🏨 Best Western Hotel du Roy D'Aragon · Bonifacio</div>
     <div class="hotel-row"><span>📍</span><span>13 Quai Jérôme Comparetti, 20169 Bonifacio</span></div>
-    <div class="hotel-row"><span>☎️</span><span>+33 4 95 73 03 99 · <a href="/cdn-cgi/l/email-protection#234a4d454c63514c5a425142444c4d0d404c4e"><span class="__cf_email__" data-cfemail="e980878f86a99b8690889b888e8687c78a8684">[email&#160;protected]</span></a></span></div>
+    <div class="hotel-row"><span>☎️</span><span>+33 4 95 73 03 99 · <a href="/cdn-cgi/l/email-protection#e881868e87a89a8791899a898f8786c68b8785"><span class="__cf_email__" data-cfemail="92fbfcf4fdd2e0fdebf3e0f3f5fdfcbcf1fdff">[email&#160;protected]</span></a></span></div>
     <div class="hotel-row"><span>🛏️</span><span>2 chambres queen size, vue sur la cour · 3 nuits (sam–lun)</span></div>
     <div class="hotel-row"><span>💶</span><span>584,70 € TTC · Taxe de séjour non incluse</span></div>
     <div class="hotel-tags">
@@ -539,13 +539,13 @@
       <div class="contact-name">🚢 La Méridionale</div>
       <div class="contact-line"><span>📞</span><span>0970 83 20 20 (info/résa)</span></div>
       <div class="contact-line"><span>📞</span><span>0970 83 13 20 (info trafic)</span></div>
-      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="097a6c7b7f606a6c2779687a7a686e6c7b7a496568646c7b606d60666768656c276f7b">[email&#160;protected]</a></span></div>
+      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0d7e687f7b646e68237d6c7e7e6c6a687f7e4d616c60687f64696462636c6168236b7f">[email&#160;protected]</a></span></div>
       <div class="contact-line"><span>🔖</span><span>Réservation N° 699536</span></div>
     </div>
     <div class="contact-card">
       <div class="contact-name">🏨 Best Western Roy D'Aragon</div>
       <div class="contact-line"><span>📞</span><span>+33 4 95 73 03 99</span></div>
-      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365f5850597644594f5744575159581855595b">[email&#160;protected]</a></span></div>
+      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d3babdb5bc93a1bcaab2a1b2b4bcbdfdb0bcbe">[email&#160;protected]</a></span></div>
       <div class="contact-line"><span>📍</span><span>13 Quai Comparetti, Bonifacio</span></div>
       <div class="contact-line"><span>🔖</span><span>Réservation N° 226883559</span></div>
     </div>
@@ -594,36 +594,6 @@
 
 <div class="footer">Corse du Sud · 17–22 avril 2026 · Famille Hunault · Navire Girolata · Golf de Sperone</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const WMO={0:['☀️','Ciel dégagé'],1:['🌤️','Peu nuageux'],2:['⛅','Partiellement nuageux'],3:['☁️','Couvert'],45:['🌫️','Brouillard'],48:['🌫️','Brouillard'],51:['🌦️','Bruine légère'],53:['🌦️','Bruine'],55:['🌧️','Bruine dense'],61:['🌧️','Pluie légère'],63:['🌧️','Pluie modérée'],65:['🌧️','Pluie forte'],80:['🌦️','Averses légères'],81:['🌦️','Averses'],82:['⛈️','Averses fortes'],95:['⛈️','Orageux'],99:['⛈️','Orage grêle']};
-const DAYS={'18':'Sam 18 avr','19':'Dim 19 avr','20':'Lun 20 avr','21':'Mar 21 avr'};
-
-async function loadWeather(){
-  try{
-    const url='https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=9.16&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode,windspeed_10m_max&timezone=Europe%2FParis&start_date=2026-04-18&end_date=2026-04-21';
-    const r=await fetch(url);
-    const d=await r.json();
-    const dates=d.daily.time;
-    dates.forEach((dt,i)=>{
-      const day=dt.split('-')[2];
-      const el=document.getElementById('wx-'+day);
-      if(!el)return;
-      const code=d.daily.weathercode[i];
-      const[ico,label]=WMO[code]||['🌡️','Variable'];
-      const tmax=Math.round(d.daily.temperature_2m_max[i]);
-      const tmin=Math.round(d.daily.temperature_2m_min[i]);
-      const rain=d.daily.precipitation_probability_max[i];
-      const wind=Math.round(d.daily.windspeed_10m_max[i]);
-      const rainColor=rain>50?'#9A3415':rain>20?'#8A6210':'#2A6040';
-      el.innerHTML=`
-        <div class="wx-card"><div class="wx-ico">${ico}</div><div>
-          <div class="wx-label">${DAYS[day]}</div>
-          <div class="wx-temp">${tmin}° – ${tmax}°C</div>
-          <div class="wx-detail">${label}</div>
-        </div></div>
-        <div class="wx-card"><div class="wx-ico">🌧️</div><div>
-          <div class="wx-label">Risque de pluie</div>
-          <div class="wx-temp" style="color:${rainColor}">${rain} %</div>
-          <div class="wx-detail">${rain<=20?'Peu probable':rain<=50?'Possible':'Probable'}</div>
-        </div></div>
-        <div class="wx-
+<script src="weather.js"></script>
+</body>
+</html>
