@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corse du Sud · Famille Hunault · Avril 2026</title>
+<style>
+  :root {
+    --cream:#F7F3EB; --sand:#EDE7D9; --navy:#1A2E44;
+    --terra:#C4612A; --sea:#3E7FA0; --green:#3B7A57;
+    --gold:#B88B2C; --muted:#7A7060; --border:rgba(26,46,68,0.12);
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);color:var(--navy);font-family:"Optima","Candara","Gill Sans MT","Segoe UI",sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--sea);text-decoration:none;} a:hover{text-decoration:underline;}
+
+  /* COVER */
+  .cover{background:var(--navy);color:white;padding:3.5rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+  .cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:radial-gradient(ellipse 80% 100% at 50% 120%,rgba(62,127,160,0.4) 0%,transparent 70%);pointer-events:none;}
+  .cover-icon{font-size:32px;margin-bottom:1rem;}
+  .cover-eyebrow{font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;}
+  .cover-title{font-family:Georgia,"Times New Roman",serif;font-size:38px;font-weight:400;letter-spacing:0.01em;margin-bottom:0.3rem;}
+  .cover-sub{font-size:15px;color:rgba(255,255,255,0.65);font-family:Georgia,serif;font-style:italic;}
+  .cover-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:1.5rem;}
+  .cover-pill{background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,0.8);}
+
+  .page{max-width:720px;margin:0 auto;padding:0 1.25rem;}
+
+  .section-label{display:flex;align-items:center;gap:10px;margin:2.5rem 0 1.1rem;}
+  .section-label span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+  .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+  /* MAP */
+  .map-wrap{background:white;border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem;}
+  .map-route-bar{padding:9px 14px;border-top:0.5px solid var(--border);display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:white;font-size:12px;color:var(--muted);}
+
+  /* INFO CARDS */
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .info-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem;}
+  .info-icon{font-size:17px;margin-bottom:5px;}
+  .info-label{font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:2px;}
+  .info-value{font-size:13px;font-weight:500;color:var(--navy);}
+  .info-detail{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.5;}
+
+  /* ALERTS */
+  .alert{background:#FDF4E0;border:0.5px solid rgba(184,139,44,0.3);border-radius:var(--radius);padding:11px 15px;font-size:13px;color:#6B4F10;margin-bottom:10px;line-height:1.55;}
+  .alert strong{color:#5A3E08;}
+  .alert-red{background:#FEF0EC;border-color:rgba(196,97,42,0.3);color:#7A2E10;}
+
+  /* BOAT CARD */
+  .boat-card{background:white;border:0.5px solid var(--border);border-left:3px solid var(--sea);border-radius:0 var(--radius) var(--radius) 0;padding:13px 15px;margin-bottom:10px;}
+  .boat-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:7px;}
+  .boat-row{display:flex;gap:7px;font-size:12px;color:var(--muted);margin-bottom:4px;align-items:flex-start;}
+  .boat-row span:first-child{flex-shrink:0;width:16px;}
+  .boat-docs{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
+  .boat-doc{font-size:11px;background:#EAF3FA;color:#2A5F7A;border-radius:4px;padding:2px 8px;}
+
+  /* HOTEL CARD */
+  .hotel-card{background:white;border:0.5px solid var(--border);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:13px 15px;margin-bottom:10px;}
+  .hotel-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:7px;}
+  .hotel-row{display:flex;gap:7px;font-size:12px;color:var(--muted);margin-bottom:4px;}
+  .hotel-row span:first-child{flex-shrink:0;width:16px;}
+  .hotel-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+  .hotel-tag{font-size:11px;background:#FDF4E0;color:#8A6210;border-radius:4px;padding:2px 8px;}
+
+  /* DAY HEADER */
+  .day-header{display:flex;align-items:baseline;gap:12px;margin:2.5rem 0 0.5rem;padding-bottom:.65rem;border-bottom:0.5px solid var(--border);}
+  .day-date{font-family:Georgia,serif;font-size:21px;font-weight:400;color:var(--navy);}
+  .day-subtitle{font-size:13px;color:var(--muted);}
+
+  /* WEATHER STRIP */
+  .wx-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 14px;}
+  .wx-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:10px 12px;display:flex;align-items:center;gap:10px;}
+  .wx-ico{font-size:22px;flex-shrink:0;}
+  .wx-label{font-size:11px;color:var(--muted);}
+  .wx-temp{font-size:14px;font-weight:500;color:var(--navy);}
+  .wx-detail{font-size:11px;color:var(--muted);margin-top:1px;}
+  .wx-loading{grid-column:1/-1;background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--muted);text-align:center;}
+
+  /* TIMELINE */
+  .timeline{position:relative;}
+  .tl-item{display:grid;grid-template-columns:52px 1fr;gap:11px;margin-bottom:9px;position:relative;}
+  .tl-item::before{content:'';position:absolute;left:25px;top:28px;bottom:-9px;width:0.5px;background:var(--border);}
+  .tl-item:last-child::before{display:none;}
+  .tl-time{text-align:right;font-size:11px;color:var(--muted);padding-top:11px;line-height:1;}
+  .tl-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:10px 13px;}
+  .tl-card.golf{border-left:3px solid var(--green);border-radius:0 var(--radius) var(--radius) 0;}
+  .tl-card.free{border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;background:#FFFDF5;}
+  .tl-card.drive{background:var(--sand);border-color:transparent;}
+  .tl-card.boat{border-left:3px solid var(--sea);border-radius:0 var(--radius) var(--radius) 0;}
+  .tl-card.hotel{border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;}
+  .tl-title{font-size:13px;font-weight:500;color:var(--navy);}
+  .tl-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;}
+  .tl-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+  .tl-tag{display:inline-block;font-size:11px;border-radius:4px;padding:2px 7px;}
+  .tl-tag.green{background:#E8F5EE;color:#2A6040;}
+  .tl-tag.gold{background:#FDF4E0;color:#8A6210;}
+  .tl-tag.red{background:#FEF0EC;color:#9A3415;}
+  .tl-tag.blue{background:#EAF3FA;color:var(--sea);}
+
+  /* OPTIONS */
+  .options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:9px;}
+  .opt-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .opt-header{padding:11px 13px 9px;border-bottom:0.5px solid var(--border);display:flex;align-items:flex-start;gap:9px;}
+  .opt-emoji{font-size:20px;flex-shrink:0;}
+  .opt-title{font-size:13px;font-weight:500;color:var(--navy);}
+  .opt-tagline{font-size:11px;color:var(--muted);margin-top:2px;}
+  .opt-body{padding:9px 13px;}
+  .opt-detail{font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5;}
+  .opt-pills{display:flex;flex-wrap:wrap;gap:4px;}
+  .opt-pill{font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);}
+
+  /* RESTAURANTS */
+  .resto-section{margin-bottom:2rem;}
+  .resto-type{font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);margin-bottom:10px;}
+  .resto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-bottom:1.25rem;}
+  .resto-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .resto-photo{width:100%;height:130px;object-fit:cover;background:var(--sand);}
+  .resto-body{padding:11px 13px;}
+  .resto-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;}
+  .resto-name{font-size:13px;font-weight:500;color:var(--navy);flex:1;margin-right:8px;}
+  .resto-stars{font-size:12px;color:var(--gold);white-space:nowrap;}
+  .resto-tag{font-size:11px;color:var(--muted);margin-bottom:6px;}
+  .resto-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:7px;}
+  .resto-pills{display:flex;flex-wrap:wrap;gap:4px;}
+  .resto-pill{font-size:11px;padding:2px 7px;border-radius:20px;border:0.5px solid var(--border);color:var(--muted);}
+
+  /* CONTACTS */
+  .contacts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:9px;margin-bottom:1.5rem;}
+  .contact-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem;}
+  .contact-name{font-size:13px;font-weight:500;margin-bottom:7px;color:var(--navy);}
+  .contact-line{font-size:12px;color:var(--muted);margin-bottom:3px;display:flex;align-items:flex-start;gap:6px;}
+
+  /* DOCS */
+  .docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:9px;margin-bottom:2rem;}
+  .doc-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem;display:flex;gap:10px;align-items:flex-start;}
+  .doc-ico{font-size:22px;flex-shrink:0;}
+  .doc-title{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:3px;}
+  .doc-line{font-size:11px;color:var(--muted);margin-bottom:2px;}
+
+  /* NOTES */
+  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px;background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;margin-bottom:3rem;}
+  .note-item{font-size:12px;color:var(--muted);line-height:1.5;}
+
+  .footer{background:var(--navy);color:rgba(255,255,255,0.3);text-align:center;padding:1.25rem;font-size:11px;letter-spacing:0.06em;margin-top:1rem;}
+
+  @media(max-width:520px){
+    .cover-title{font-size:28px;}
+    .tl-item{grid-template-columns:40px 1fr;gap:8px;}
+    .tl-item::before{left:19px;}
+    .day-header{flex-direction:column;gap:2px;}
+    .notes-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-icon">⛵</div>
+  <div class="cover-eyebrow">Carnet de voyage · Famille Hunault</div>
+  <div class="cover-title">Corse du Sud</div>
+  <div class="cover-sub">17 — 22 avril 2026 · La Méridionale · Navire Girolata</div>
+  <div class="cover-pills">
+    <span class="cover-pill">🚢 Marseille ↔ Porto-Vecchio</span>
+    <span class="cover-pill">⛳ Golf de Sperone × 3</span>
+    <span class="cover-pill">🏨 Best Western Roy D'Aragon</span>
+    <span class="cover-pill">🏰 Bonifacio</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- CARTE -->
+  <div class="section-label"><span>Itinéraire</span></div>
+  <div class="map-wrap">
+    <iframe src="https://maps.google.com/maps?f=d&hl=fr&saddr=Porto-Vecchio,+Corse-du-Sud,+France&daddr=Plage+de+Palombaggia,+Porto-Vecchio+to:Bonifacio,+Corse-du-Sud+to:Golf+de+Sperone,+Bonifacio&output=embed&t=m"
+      width="100%" height="400" style="border:0;display:block;" allowfullscreen loading="lazy" title="Itinéraire Corse du Sud"></iframe>
+    <div class="map-route-bar">
+      <span>🚢 Porto-Vecchio</span><span>→</span><span>🌴 Palombaggia</span><span>→</span>
+      <span>🏰 Bonifacio</span><span>→</span><span>⛳ Golf Sperone</span><span>→</span>
+      <span>🏖️ Rondinara · Santa Giulia</span>
+    </div>
+  </div>
+
+  <!-- INFOS PRATIQUES -->
+  <div class="section-label"><span>Infos pratiques</span></div>
+  <div class="info-grid" style="margin-bottom:1rem;">
+    <div class="info-card">
+      <div class="info-icon">🚢</div>
+      <div class="info-label">Navire</div>
+      <div class="info-value">Girolata</div>
+      <div class="info-detail">La Méridionale<br>Rés. N° 699536</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">👥</div>
+      <div class="info-label">Passagers</div>
+      <div class="info-value">Paul, Jean-Louis, Nathalie</div>
+      <div class="info-detail">1 adulte + 2 seniors<br>Chambre A4E vue mer</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🚗</div>
+      <div class="info-label">Véhicule</div>
+      <div class="info-value">Volvo XC40</div>
+      <div class="info-detail">HC182KK<br>Macaron véhicule non thermique</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🏨</div>
+      <div class="info-label">Hôtel</div>
+      <div class="info-value">Best Western Roy D'Aragon</div>
+      <div class="info-detail">13 Quai Comparetti, Bonifacio<br>Rés. N° 226883559</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">⛳</div>
+      <div class="info-label">Golf</div>
+      <div class="info-value">Golf de Sperone</div>
+      <div class="info-detail">3 parties · 18 trous<br>+33 4 95 73 17 13</div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🌡️</div>
+      <div class="info-label">Météo avril</div>
+      <div class="info-value">18 – 22 °C</div>
+      <div class="info-detail">Soleil, vent possible<br>Mer ~17 °C</div>
+    </div>
+  </div>
+
+  <!-- TRAVERSÉE ALLER -->
+  <div class="section-label"><span>Traversée aller</span></div>
+  <div class="alert">⚠️ <strong>Embarquement Marseille :</strong> Véhicules Porte 1 Arenc à partir de <strong>14h30</strong> · Heure limite d'enregistrement : <strong>17h00</strong></div>
+  <div class="boat-card">
+    <div class="boat-title">🚢 Marseille → Porto-Vecchio · Vendredi 17 avril</div>
+    <div class="boat-row"><span>🕔</span><span>Départ <strong>17h30</strong> · Arrivée <strong>samedi 18 avril à 07h30</strong></span></div>
+    <div class="boat-row"><span>📍</span><span>Gare Maritime Terminal 1 Arenc, 13002 Marseille · GPS : 43.311889, 5.367111</span></div>
+    <div class="boat-row"><span>☎️</span><span>04 91 99 45 93 / 04 91 99 45 98</span></div>
+    <div class="boat-row"><span>🚗</span><span>Depuis A55 sortie 4 Les Ports / Depuis A7 sortie 36 → sortie 3 Arenc Gare Maritime</span></div>
+    <div class="boat-docs">
+      <span class="boat-doc">🎫 Billet rés. 699536</span>
+      <span class="boat-doc">🪪 Pièces d'identité</span>
+      <span class="boat-doc">🚗 Documents véhicule</span>
+      <span class="boat-doc">💳 2 moyens de paiement</span>
+    </div>
+  </div>
+
+  <!-- HÔTEL -->
+  <div class="section-label"><span>Hébergement</span></div>
+  <div class="alert">🏨 Check-in à partir de <strong>16h00</strong> le samedi 18 · Check-out avant <strong>11h00</strong> le mardi 21 · Petit-déjeuner en option : <strong>16 €/pers</strong> à régler sur place</div>
+  <div class="hotel-card">
+    <div class="hotel-title">🏨 Best Western Hotel du Roy D'Aragon · Bonifacio</div>
+    <div class="hotel-row"><span>📍</span><span>13 Quai Jérôme Comparetti, 20169 Bonifacio</span></div>
+    <div class="hotel-row"><span>☎️</span><span>+33 4 95 73 03 99 · <a href="/cdn-cgi/l/email-protection#234a4d454c63514c5a425142444c4d0d404c4e"><span class="__cf_email__" data-cfemail="e980878f86a99b8690889b888e8687c78a8684">[email&#160;protected]</span></a></span></div>
+    <div class="hotel-row"><span>🛏️</span><span>2 chambres queen size, vue sur la cour · 3 nuits (sam–lun)</span></div>
+    <div class="hotel-row"><span>💶</span><span>584,70 € TTC · Taxe de séjour non incluse</span></div>
+    <div class="hotel-tags">
+      <span class="hotel-tag">⚠️ Non annulable · Non remboursable · Non modifiable</span>
+    </div>
+  </div>
+
+  <!-- ═══ VENDREDI 17 AVRIL ═══ -->
+  <div class="day-header">
+    <div class="day-date">Vendredi 17 avril</div>
+    <div class="day-subtitle">Départ Marseille</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">14h30</div>
+      <div class="tl-card boat">
+        <div class="tl-title">🚢 Présentation au port de Marseille</div>
+        <div class="tl-desc">Gare Maritime Terminal 1 Arenc. Véhicules Porte 1 · Piétons Porte 2 (Tram T2 station Arenc-Le Silo). Limite d'enregistrement : <strong>17h00</strong>.</div>
+        <div class="tl-tags"><span class="tl-tag red">GPS Marseille : 43.311889, 5.367111</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17h30</div>
+      <div class="tl-card boat">
+        <div class="tl-title">⚓ Appareillage · Navire Girolata</div>
+        <div class="tl-desc">Traversée nuit · Arrivée Porto-Vecchio le lendemain à 07h30. Chambre A4E, 4 lits single, vue mer.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SAMEDI 18 AVRIL ═══ -->
+  <div class="day-header" style="margin-top:2.5rem;">
+    <div class="day-date">Samedi 18 avril</div>
+    <div class="day-subtitle">Arrivée Porto-Vecchio · Route vers Bonifacio · Premier golf</div>
+  </div>
+  <div id="wx-18" class="wx-strip"><div class="wx-loading">Chargement météo…</div></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">07h30</div>
+      <div class="tl-card boat">
+        <div class="tl-title">🚢 Arrivée à Porto-Vecchio</div>
+        <div class="tl-desc">Débarquement Quai de Syracuse. Petit-déjeuner au port ou dans la vieille ville (5 min à pied). Récupérer un café avant de prendre la route.</div>
+        <div class="tl-tags"><span class="tl-tag blue">GPS Porto-Vecchio : 41.587491, 9.292374</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">09h30</div>
+      <div class="tl-card">
+        <div class="tl-title">🌴 Plage de Palombaggia</div>
+        <div class="tl-desc">La plage iconique de Corse — sable blanc, eau cristalline, pins parasols. 15 min du port, quasi déserte le matin en avril. Idéal pour se dégourdir les jambes après la nuit sur le bateau.</div>
+        <div class="tl-tags"><span class="tl-tag gold">15 min de Porto-Vecchio · Quasi désert en avril</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11h00</div>
+      <div class="tl-card drive">
+        <div class="tl-title">🚗 Route vers Bonifacio · Déjeuner</div>
+        <div class="tl-desc">~30 min depuis Palombaggia. Déjeuner au port avant le golf. L'hôtel (Quai Comparetti) accepte les bagages avant le check-in à 16h.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13h20</div>
+      <div class="tl-card golf">
+        <div class="tl-title">⛳ Golf de Sperone — 18 trous</div>
+        <div class="tl-desc">L'un des plus beaux parcours de Méditerranée, tracé sur les falaises face à la Sardaigne.</div>
+        <div class="tl-tags"><span class="tl-tag green">Fin estimée vers 18h</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">16h00</div>
+      <div class="tl-card hotel">
+        <div class="tl-title">🏨 Check-in Best Western Roy D'Aragon</div>
+        <div class="tl-desc">Quai Comparetti — au cœur du port de Bonifacio, au pied de la haute-ville. 2 chambres queen size, rés. N° 226883559.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">19h00</div>
+      <div class="tl-card">
+        <div class="tl-title">🏰 Haute-ville de Bonifacio + dîner</div>
+        <div class="tl-desc">Citadelle médiévale sur les falaises blanches, lumière dorée en soirée. Ruelles essentiellement plates une fois en haut, à 5 min à pied de l'hôtel.</div>
+        <div class="tl-tags"><span class="tl-tag blue">5 min à pied depuis l'hôtel</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ DIMANCHE 19 AVRIL ═══ -->
+  <div class="day-header" style="margin-top:2.5rem;">
+    <div class="day-date">Dimanche 19 avril</div>
+    <div class="day-subtitle">Golf du matin · Après-midi libre</div>
+  </div>
+  <div id="wx-19" class="wx-strip"><div class="wx-loading">Chargement météo…</div></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">09h30</div>
+      <div class="tl-card golf">
+        <div class="tl-title">⛳ Golf de Sperone — 18 trous</div>
+        <div class="tl-desc">Départ matinal, parcours face à la Sardaigne.</div>
+        <div class="tl-tags"><span class="tl-tag green">Fin estimée vers 14h30</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15h00</div>
+      <div class="tl-card free">
+        <div class="tl-title">✨ Après-midi libre — 6 options ci-dessous</div>
+        <div class="tl-desc">Après déjeuner, une belle après-midi pour profiter.</div>
+        <div class="tl-tags"><span class="tl-tag gold">6 options ↓</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-label" style="margin-top:1rem;"><span>Options dimanche après-midi</span></div>
+  <div class="options-grid">
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">⛵</div><div><div class="opt-title">Excursion en bateau</div><div class="opt-tagline">Grottes marines · Lavezzi</div></div></div><div class="opt-body"><div class="opt-detail">Falaises de Bonifacio depuis la mer, grottes et îles Lavezzi. Assis, zéro marche. 4,9/5 sur +1000 avis.</div><div class="opt-pills"><span class="opt-pill">~3h</span><span class="opt-pill">Réserver à l'avance</span><span class="opt-pill"><a href="https://corse-nautic-escape.com" target="_blank">corse-nautic-escape.com</a></span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🏖️</div><div><div class="opt-title">Plage de Rondinara</div><div class="opt-tagline">Fer à cheval turquoise</div></div></div><div class="opt-body"><div class="opt-detail">Eau très peu profonde, sable fin. Peu de monde en avril.</div><div class="opt-pills"><span class="opt-pill">30 min de Bonifacio</span><span class="opt-pill">Parking 6 €</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🌊</div><div><div class="opt-title">Plage de Santa Giulia</div><div class="opt-tagline">Lagon abrité du vent</div></div></div><div class="opt-body"><div class="opt-detail">Lagon naturel calme, plus abrité si vent présent. Bar sur place.</div><div class="opt-pills"><span class="opt-pill">25 min de Bonifacio</span><span class="opt-pill">Bar / restauration</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🌴</div><div><div class="opt-title">Plage de Palombaggia</div><div class="opt-tagline">Si pas faite samedi</div></div></div><div class="opt-body"><div class="opt-detail">Sable blanc, eau cristalline, pins parasols. Quasi déserte en avril.</div><div class="opt-pills"><span class="opt-pill">45 min de Bonifacio</span><span class="opt-pill">Près de Porto-Vecchio</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🏰</div><div><div class="opt-title">Haute-ville Bonifacio</div><div class="opt-tagline">Si pas faite samedi soir</div></div></div><div class="opt-body"><div class="opt-detail">Citadelle, ruelles, vues sur falaises et Sardaigne. ~1h, très plat.</div><div class="opt-pills"><span class="opt-pill">À deux pas de l'hôtel</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🏛️</div><div><div class="opt-title">Porto-Vecchio</div><div class="opt-tagline">Vieille ville &amp; marina</div></div></div><div class="opt-body"><div class="opt-detail">Cité génoise perchée, terrasses avec vue sur le golfe, glaciers.</div><div class="opt-pills"><span class="opt-pill">40 min de Bonifacio</span><span class="opt-pill">Terrasses</span></div></div></div>
+  </div>
+
+  <!-- ═══ LUNDI 20 AVRIL ═══ -->
+  <div class="day-header" style="margin-top:2.5rem;">
+    <div class="day-date">Lundi 20 avril</div>
+    <div class="day-subtitle">Dernier golf · Journée et soirée libres</div>
+  </div>
+  <div id="wx-20" class="wx-strip"><div class="wx-loading">Chargement météo…</div></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">09h00</div>
+      <div class="tl-card golf">
+        <div class="tl-title">⛳ Golf de Sperone — 18 trous</div>
+        <div class="tl-desc">La dernière partie !</div>
+        <div class="tl-tags"><span class="tl-tag green">Fin estimée vers 13h30</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">14h00</div>
+      <div class="tl-card free">
+        <div class="tl-title">✨ Après-midi et soirée libres</div>
+        <div class="tl-desc">Nuit à l'hôtel — toute la soirée disponible pour profiter de Bonifacio.</div>
+        <div class="tl-tags"><span class="tl-tag gold">6 options ↓</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-label" style="margin-top:1rem;"><span>Options lundi</span></div>
+  <div class="options-grid">
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🏰</div><div><div class="opt-title">Haute-ville Bonifacio</div><div class="opt-tagline">Si pas encore visitée</div></div></div><div class="opt-body"><div class="opt-detail">Citadelle médiévale, ruelles, boutiques, terrasses. Le must avant de partir.</div><div class="opt-pills"><span class="opt-pill">À deux pas de l'hôtel</span><span class="opt-pill">~1h, plat</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">💡</div><div><div class="opt-title">Cap Pertusato</div><div class="opt-tagline">Le bout du monde corse</div></div></div><div class="opt-body"><div class="opt-detail">Le phare le plus au sud de la Corse, vue imprenable sur le détroit et la Sardaigne. Marche de 15 min depuis le parking.</div><div class="opt-pills"><span class="opt-pill">10 min de Bonifacio</span><span class="opt-pill">~15 min à pied facile</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">⛵</div><div><div class="opt-title">Excursion en bateau</div><div class="opt-tagline">Si pas faite dimanche</div></div></div><div class="opt-body"><div class="opt-detail">Grottes marines et Lavezzi. Vérifier horaire après-midi disponible.</div><div class="opt-pills"><span class="opt-pill">~3h assis</span><span class="opt-pill"><a href="https://corse-nautic-escape.com" target="_blank">corse-nautic-escape.com</a></span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🌴</div><div><div class="opt-title">Plage de Palombaggia</div><div class="opt-tagline">Si pas encore faite</div></div></div><div class="opt-body"><div class="opt-detail">Sable blanc et eau cristalline, sur la route vers Porto-Vecchio.</div><div class="opt-pills"><span class="opt-pill">45 min de Bonifacio</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">🏛️</div><div><div class="opt-title">Sartène</div><div class="opt-tagline">"La plus corse des villes"</div></div></div><div class="opt-body"><div class="opt-detail">Village en granite sombre, ruelles médiévales, ambiance authentique.</div><div class="opt-pills"><span class="opt-pill">45 min</span><span class="opt-pill">Détour par l'ouest</span></div></div></div>
+    <div class="opt-card"><div class="opt-header"><div class="opt-emoji">⚓</div><div><div class="opt-title">Marina de Bonifacio</div><div class="opt-tagline">Promenade du soir</div></div></div><div class="opt-body"><div class="opt-detail">Balade au port, terrasses, glaciers, vue sur les bateaux. Sans effort, au pied de l'hôtel.</div><div class="opt-pills"><span class="opt-pill">Au pied de l'hôtel</span><span class="opt-pill">Plat, sans contrainte</span></div></div></div>
+  </div>
+
+  <!-- ═══ MARDI 21 AVRIL ═══ -->
+  <div class="day-header" style="margin-top:2.5rem;">
+    <div class="day-date">Mardi 21 avril</div>
+    <div class="day-subtitle">Matin libre · Check-out avant 11h · Embarquement Porto-Vecchio 17h</div>
+  </div>
+  <div id="wx-21" class="wx-strip"><div class="wx-loading">Chargement météo…</div></div>
+  <div class="alert alert-red">⚠️ <strong>Check-out avant 11h00.</strong> Présentation au port de Porto-Vecchio à partir de <strong>15h00</strong> — Heure limite d'enregistrement : <strong>16h30</strong>.</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">07h–11h</div>
+      <div class="tl-card free">
+        <div class="tl-title">🌅 Matin libre · Petit-déjeuner à l'hôtel</div>
+        <div class="tl-desc">Dernière matinée à Bonifacio. Petit-déjeuner à l'hôtel possible (16 €/pers à régler sur place). Promenade sur le quai, café au port.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11h00</div>
+      <div class="tl-card hotel">
+        <div class="tl-title">🏨 Check-out Best Western Roy D'Aragon</div>
+        <div class="tl-desc">Libérer les chambres avant 11h. Possibilité de laisser les bagages à l'hôtel le temps de déjeuner.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">11h–14h</div>
+      <div class="tl-card">
+        <div class="tl-title">🍽️ Déjeuner + dernière balade</div>
+        <div class="tl-desc">Option : Plage de Palombaggia sur la route (15 min avant Porto-Vecchio), puis déjeuner à Porto-Vecchio.</div>
+        <div class="tl-tags"><span class="tl-tag gold">Palombaggia sur la route</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15h00</div>
+      <div class="tl-card boat">
+        <div class="tl-title">🚢 Présentation · Gare Maritime Porto-Vecchio</div>
+        <div class="tl-desc">Port de commerce · Quai de Syracuse. T10, suivre Centre-Ville et Ports. Arrivé sur le port de plaisance, tourner à droite et longer la mer jusqu'au bout du quai. Limite : 16h30.</div>
+        <div class="tl-tags"><span class="tl-tag red">GPS : 41.587491, 9.292374 · Tel : 04 95 70 06 03</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">17h00</div>
+      <div class="tl-card boat">
+        <div class="tl-title">⚓ Départ Porto-Vecchio · Navire Girolata</div>
+        <div class="tl-desc">Arrivée à Marseille le mercredi 22 avril à 08h00.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESTAURANTS -->
+  <div class="section-label"><span>Où manger à Bonifacio</span></div>
+  <div class="resto-section">
+    <div class="resto-type">🍽️ Déjeuner — 3 adresses</div>
+    <div class="resto-grid">
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMorFYM3_cNg2YX3hgb0nfqO5UhJVGJXWPpCMR7cQJQfwkfFjBZ1jgFdXa_v3ACqXJKl1UHFhfSrYkF3J4Gb6_dOrgHWqefE4MKlIFrA7_kf8FPVOZUvCimriCbFl_Vy7ybASGEPjYHlNaZnuGRe4=s800-w800-h600" alt="Del Ferro" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">Del Ferro</div>
+            <div class="resto-stars">★ 4,8 · 1475 avis</div>
+          </div>
+          <div class="resto-tag">Quai Banda del Ferro · Port · Fermé sam</div>
+          <div class="resto-desc">Le meilleur rapport qualité/prix du port. Burger maison, steaks, tartare de saumon — tout est fait maison. Service attentionné, terrasse sur le quai avec vue coucher de soleil. Vrai coup de cœur des visiteurs.</div>
+          <div class="resto-pills"><span class="resto-pill">€€</span><span class="resto-pill">Midi &amp; soir</span><span class="resto-pill">Terrasse port</span><span class="resto-pill">☎ +33 4 20 57 10 53</span></div>
+        </div>
+      </div>
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMDmq4UlAdlnLZ_yZsm4x9wJ5TjKwEXiFRBWnCjA9c2GK4FtTHFfvLVqZ-S1zT1eTsj2FRLaYJoMsv2ggVbI2mmm0kpLM7fIpMHMzILmA8VEcqm_RJyimfVxdDX7wY8-uiXHxJFnMFTnVrPYs=s800-w800-h600" alt="La Minute Moule" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">La Minute Moule</div>
+            <div class="resto-stars">★ 4,6 · 1389 avis</div>
+          </div>
+          <div class="resto-tag">Rue des Moulins · Haute-ville · Fermé sam</div>
+          <div class="resto-desc">Une spécialité unique : les moules en 10 sauces au choix (marinière, basilic, espagnole…), fraîches et généreuses. Vue sur le port depuis la haute-ville. Familial, authentique, très abordable. Réserver conseillé.</div>
+          <div class="resto-pills"><span class="resto-pill">€</span><span class="resto-pill">Midi &amp; soir</span><span class="resto-pill">Vue port</span><span class="resto-pill">☎ +33 4 95 50 55 67</span></div>
+        </div>
+      </div>
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNeFOhFGAp8aK9xUf-gxfmGlFt8eLvwv6fUPP4TpG5HBUMuLTBaZwnbQyMaqXF5-bLVwjQb0qzS87oSDW-ynLfmX68Iv7CqRxEg2B2pR7P1MNrPVq4QzBIcpMJJlGOv8v7Bm0OBNXqIzVfkw=s800-w800-h600" alt="L'Escale" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">L'Escale</div>
+            <div class="resto-stars">★ 4,3 · 1189 avis</div>
+          </div>
+          <div class="resto-tag">4 Quai Comparetti · Même quai que l'hôtel · Ouvert 7j/7</div>
+          <div class="resto-desc">À 2 min à pied de l'hôtel, directement sur votre quai. Ouvert dès 7h pour le petit-déjeuner. Soupe de poisson réputée, cuisine simple et généreuse. Idéal le samedi (quand Del Ferro est fermé) ou après une demi-journée de golf.</div>
+          <div class="resto-pills"><span class="resto-pill">€€</span><span class="resto-pill">7h–22h</span><span class="resto-pill">Quai Comparetti</span><span class="resto-pill">☎ +33 4 95 73 19 79</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-type">🌙 Dîner — 3 adresses</div>
+    <div class="resto-grid">
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZMh3w1o5wJ0M7CwEF6gJ7MRtCLQ5uHVVnVMVFLCyHHGIZ_LME9gUjkbCl5X5U2ZAuETlC9cpXHMJeJhVXFMmX4OKpGBhCb0ghg3mfMW8mU0qlLQrOIuMoHUl8hpLp5WxksPf8yO68hIvApqA=s800-w800-h600" alt="Bodega Bonifacio" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">Bodega Bonifacio</div>
+            <div class="resto-stars">★ 4,8 · 1417 avis</div>
+          </div>
+          <div class="resto-tag">Haute-ville · Fermé dim · Pas de réservation — arriver à 19h</div>
+          <div class="resto-desc">La table incontournable de Bonifacio. Cuisine corse authentique : agneau, aubergines bonifaciennes, sanglier, moules. Ambiance chaleureuse, petite salle intimiste. Première arrivée, première servie — à 19h max pour avoir une place.</div>
+          <div class="resto-pills"><span class="resto-pill">€€</span><span class="resto-pill">Soir uniquement</span><span class="resto-pill">Sans réservation</span><span class="resto-pill">☎ +33 6 73 75 94 70</span></div>
+        </div>
+      </div>
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZOxVYpkWFvPXsRQPF0hiFECBGE5WB9Cj1P7s7wNEp6sBd-VFHjSvEyLg3JQSF_cMz7gqijKQLKqoTEMN7eWq8CZlqfKNDWqFe-4YvbgDMXUTEaFKEJFXHJwSN_NZFYF17Qdqk8FzY-gTFV0=s800-w800-h600" alt="Aria Nova" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">Aria Nova</div>
+            <div class="resto-stars">★ 4,5 · 647 avis</div>
+          </div>
+          <div class="resto-tag">4 Rue Fred Scamaroni · Haute-ville · Fermé sam midi</div>
+          <div class="resto-desc">Cuisine corse gastronomique tenue par le patron qui accueille lui-même chaque table. Spécialités : agneau rôti, aubergines à la bonifacienne, tiramisu châtaigne, fiadone. Fleurs comestibles, pain sans gluten dispo. Une cuisine sincère et raffinée.</div>
+          <div class="resto-pills"><span class="resto-pill">€€</span><span class="resto-pill">Midi &amp; soir</span><span class="resto-pill">Cuisine corse fine</span><span class="resto-pill">☎ +33 6 24 56 94 76</span></div>
+        </div>
+      </div>
+      <div class="resto-card">
+        <img class="resto-photo" src="https://lh3.googleusercontent.com/place-photos/AJRVUZNBz3a7V7q7vQAEbfYxBiJ0xT4Wv4U2iGhXRGNBj1EHefVBk2nOy-2hXWV8Rz0kOqlLOOBKW0nFvELr8KqxpQfyqd7IjAFJFp3SrO2lIE4LWBIDf2K_TfWiTX7GiH0V-N_yrUX-LLM-Rl7Q=s800-w800-h600" alt="U Castille" onerror="this.style.display='none'">
+        <div class="resto-body">
+          <div class="resto-header">
+            <div class="resto-name">U Castillé</div>
+            <div class="resto-stars">★ 4,4 · 1182 avis</div>
+          </div>
+          <div class="resto-tag">7 Rue Simon Varsi · Haute-ville · Fermé dim soir</div>
+          <div class="resto-desc">Le classique de la haute-ville : pizzas au feu de bois, agneau, crevettes grillées, salade chèvre chaud. Vue sur les falaises depuis la salle. Rapport qualité-prix excellent, parfait pour un repas convivial sans prise de tête. Réservation conseillée.</div>
+          <div class="resto-pills"><span class="resto-pill">€€</span><span class="resto-pill">Midi &amp; soir</span><span class="resto-pill">Vue falaises</span><span class="resto-pill">☎ +33 4 95 73 04 99</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTS -->
+  <div class="section-label"><span>Contacts utiles</span></div>
+  <div class="contacts-grid">
+    <div class="contact-card">
+      <div class="contact-name">🚢 La Méridionale</div>
+      <div class="contact-line"><span>📞</span><span>0970 83 20 20 (info/résa)</span></div>
+      <div class="contact-line"><span>📞</span><span>0970 83 13 20 (info trafic)</span></div>
+      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="097a6c7b7f606a6c2779687a7a686e6c7b7a496568646c7b606d60666768656c276f7b">[email&#160;protected]</a></span></div>
+      <div class="contact-line"><span>🔖</span><span>Réservation N° 699536</span></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">🏨 Best Western Roy D'Aragon</div>
+      <div class="contact-line"><span>📞</span><span>+33 4 95 73 03 99</span></div>
+      <div class="contact-line"><span>✉️</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365f5850597644594f5744575159581855595b">[email&#160;protected]</a></span></div>
+      <div class="contact-line"><span>📍</span><span>13 Quai Comparetti, Bonifacio</span></div>
+      <div class="contact-line"><span>🔖</span><span>Réservation N° 226883559</span></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">⛳ Golf de Sperone</div>
+      <div class="contact-line"><span>📞</span><span>+33 4 95 73 17 13</span></div>
+      <div class="contact-line"><span>🌐</span><span><a href="https://www.golf-sperone.com" target="_blank">golf-sperone.com</a></span></div>
+      <div class="contact-line"><span>📍</span><span>Route de Sperone, Bonifacio</span></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">⛵ Corse Nautic Escape</div>
+      <div class="contact-line"><span>📞</span><span>+33 7 57 46 55 61</span></div>
+      <div class="contact-line"><span>🌐</span><span><a href="https://corse-nautic-escape.com" target="_blank">corse-nautic-escape.com</a></span></div>
+      <div class="contact-line"><span>📍</span><span>Quai Comparetti, Bonifacio</span></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">🆘 Urgences</div>
+      <div class="contact-line"><span>🚑</span><span>SAMU : 15</span></div>
+      <div class="contact-line"><span>👮</span><span>Gendarmerie : 17</span></div>
+      <div class="contact-line"><span>📱</span><span>Numéro européen : 112</span></div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-name">🏖️ Porto-Vecchio · Port</div>
+      <div class="contact-line"><span>📞</span><span>04 95 70 06 03</span></div>
+      <div class="contact-line"><span>📍</span><span>Quai de Syracuse</span></div>
+      <div class="contact-line"><span>🗺️</span><span>GPS : 41.587491, 9.292374</span></div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section-label"><span>À ne pas oublier</span></div>
+  <div class="notes-grid">
+    <div class="note-item">🎫 Billet bateau : titre de transport, pièces d'identité, documents véhicule, 2 moyens de paiement</div>
+    <div class="note-item">⏰ Marseille aller : présentation dès 14h30, limite <strong>17h00</strong> le vendredi 17 avril</div>
+    <div class="note-item">⏰ Porto-Vecchio retour : présentation dès 15h00, limite <strong>16h30</strong> le mardi 21 avril</div>
+    <div class="note-item">🏨 Check-out hôtel : avant 11h00 le mardi 21 avril · Non remboursable</div>
+    <div class="note-item">🧢 Toutes les visites proposées = moins d'1h de marche</div>
+    <div class="note-item">⛵ Excursion bateau : réserver à l'avance sur corse-nautic-escape.com</div>
+    <div class="note-item">🍽️ Bodega et Del Ferro : pas de réservation — arriver tôt (19h / 11h45)</div>
+    <div class="note-item">⛽ Faire le plein à Bonifacio ou Porto-Vecchio, routes isolées au sud</div>
+    <div class="note-item">🌊 Mer ~17°C en avril — prévoir une veste légère pour l'excursion bateau</div>
+    <div class="note-item">🅿️ Plages en avril : peu de monde, parking facile et peu cher</div>
+  </div>
+
+</div><!-- /page -->
+
+<div class="footer">Corse du Sud · 17–22 avril 2026 · Famille Hunault · Navire Girolata · Golf de Sperone</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const WMO={0:['☀️','Ciel dégagé'],1:['🌤️','Peu nuageux'],2:['⛅','Partiellement nuageux'],3:['☁️','Couvert'],45:['🌫️','Brouillard'],48:['🌫️','Brouillard'],51:['🌦️','Bruine légère'],53:['🌦️','Bruine'],55:['🌧️','Bruine dense'],61:['🌧️','Pluie légère'],63:['🌧️','Pluie modérée'],65:['🌧️','Pluie forte'],80:['🌦️','Averses légères'],81:['🌦️','Averses'],82:['⛈️','Averses fortes'],95:['⛈️','Orageux'],99:['⛈️','Orage grêle']};
+const DAYS={'18':'Sam 18 avr','19':'Dim 19 avr','20':'Lun 20 avr','21':'Mar 21 avr'};
+
+async function loadWeather(){
+  try{
+    const url='https://api.open-meteo.com/v1/forecast?latitude=41.39&longitude=9.16&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode,windspeed_10m_max&timezone=Europe%2FParis&start_date=2026-04-18&end_date=2026-04-21';
+    const r=await fetch(url);
+    const d=await r.json();
+    const dates=d.daily.time;
+    dates.forEach((dt,i)=>{
+      const day=dt.split('-')[2];
+      const el=document.getElementById('wx-'+day);
+      if(!el)return;
+      const code=d.daily.weathercode[i];
+      const[ico,label]=WMO[code]||['🌡️','Variable'];
+      const tmax=Math.round(d.daily.temperature_2m_max[i]);
+      const tmin=Math.round(d.daily.temperature_2m_min[i]);
+      const rain=d.daily.precipitation_probability_max[i];
+      const wind=Math.round(d.daily.windspeed_10m_max[i]);
+      const rainColor=rain>50?'#9A3415':rain>20?'#8A6210':'#2A6040';
+      el.innerHTML=`
+        <div class="wx-card"><div class="wx-ico">${ico}</div><div>
+          <div class="wx-label">${DAYS[day]}</div>
+          <div class="wx-temp">${tmin}° – ${tmax}°C</div>
+          <div class="wx-detail">${label}</div>
+        </div></div>
+        <div class="wx-card"><div class="wx-ico">🌧️</div><div>
+          <div class="wx-label">Risque de pluie</div>
+          <div class="wx-temp" style="color:${rainColor}">${rain} %</div>
+          <div class="wx-detail">${rain<=20?'Peu probable':rain<=50?'Possible':'Probable'}</div>
+        </div></div>
+        <div class="wx-
